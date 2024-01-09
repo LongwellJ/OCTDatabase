@@ -1,0 +1,314 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{% for message in get_flashed_messages() %}
+
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+    
+{% endfor %}
+
+
+
+
+{% if profile.poster_id == current_user.id or current_user.id == 1 %}
+<br>
+<h1>Upload an OCT</h1>
+<br>
+<form method="POST" action="{{ url_for('preop1', id=id)}}" enctype="multipart/form-data">
+    <input type="file" name="Upload" id="Upload" accept="application/pdf, image/png" multiple>
+    <button class="btn btn-dark">Submit</button>
+</form>
+
+<br>
+<br>
+{% for link in list %}
+
+<img src = "{{ link }}" width="200px" height="200px" >
+
+{% endfor %}
+
+
+
+<h1>Edit Patient's Data</h1>
+
+<br/>
+
+  <div class="box shadow p-3 mb-5 bg-body-grey rounded">
+
+    
+    
+      <h2>Patient's Study Identifiers </h2>
+
+
+        <form method="POST">
+          {{ form.hidden_tag() }}
+
+          
+          
+          {{ form.dateofbirth.label(class="form-label") }}
+
+          {{ form.dateofbirth(class="form-control") }}
+
+          <br/>
+
+          {{ form.firstandlast.label(class="form-label") }}
+
+          {{ form.firstandlast(class="form-control") }}
+
+          <br/>
+ 
+  </div>
+
+
+  
+
+<div class="box shadow p-3 mb-5 bg-body-grey rounded">
+
+
+  <h2>Baseline Visit Pre-Op I </h2>
+
+  {{ form.age.label(class="form-label") }}
+
+  {{ form.age(class="form-control") }}
+
+  <br/>
+
+
+    
+  {{ form.gender.label(class="form-label") }}
+
+  {{ form.gender(class="form-control") }}
+
+  <br/>
+
+
+  {{ form.laterality.label(class="form-label") }}
+
+  {{ form.laterality(class="form-control") }}
+
+  <br/>
+
+  {{ form.date1.label(class="form-label") }}
+
+  {{ form.date1(class="form-control") }}
+
+  <br/>
+
+  {{ form.fovea_status.label(class="form-label") }}
+
+  {{ form.fovea_status(class="form-control") }}
+
+  <br/>
+
+  
+  {{ form.shadow.label(class="form-label") }}
+
+  {{ form.shadow(class="form-control") }}
+
+  <br/>
+
+  
+  {{ form.involved.label(class="form-label") }}
+
+  {{ form.involved(class="form-control") }}
+
+  <br/>
+
+  {{ form.lens_status.label(class="form-label") }}
+
+  {{ form.lens_status(class="form-control") }}
+
+  <br/>
+
+  {{ form.extent.label(class="form-label") }}
+
+  {{ form.extent(class="form-control", placeholder="hh:mm-hh:mm") }}
+  
+  {% if form.extent.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.extent.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+  <br/>
+
+  {{ form.area.label(class="form-label") }}
+
+  {{ form.area(class="form-control") }}
+
+  <br/>
+
+
+  {{ form.detached.label(class="form-label") }}
+
+  {{ form.detached(class="form-control", placeholder="number-hh:mm") }}
+  
+  {% if form.detached.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.detached.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+<br/>
+  {{ form.detached2(class="form-control", placeholder="number-hh:mm") }}
+  {% if form.detached2.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.detached2.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+  <br/>
+  {{ form.detached3(class="form-control", placeholder="number-hh:mm") }}
+  {% if form.detached3.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.detached3.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+  <br/>
+  {{ form.detached4(class="form-control", placeholder="number-hh:mm") }}
+  {% if form.detached4.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.detached4.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+  <br/>
+  {{ form.detached5(class="form-control", placeholder="number-hh:mm") }}
+  {% if form.detached5.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.detached5.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+
+  <br/>
+
+
+  {{ form.attached.label(class="form-label") }}
+
+  {{ form.attached(class="form-control", placeholder="number-hh:mm") }}
+  {% if form.attached.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.attached.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+  <br/>
+  {{ form.attached2(class="form-control", placeholder="number-hh:mm") }}
+  {% if form.attached2.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.attached2.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+  <br/>
+  {{ form.attached3(class="form-control", placeholder="number-hh:mm") }}
+  {% if form.attached3.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.attached3.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+  <br/>
+  {{ form.attached4(class="form-control", placeholder="number-hh:mm") }}
+  {% if form.attached4.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.attached4.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+  <br/>
+  {{ form.attached5(class="form-control", placeholder="number-hh:mm") }}
+  {% if form.attached5.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.attached5.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+  <br/>
+
+
+  {{ form.size.label(class="form-label") }}
+
+  {{ form.size(class="form-control") }}
+
+  <br/>
+
+
+  {{ form.bcva.label(class="form-label") }}
+
+  {{ form.bcva(class="form-control", placeholder="XX/YY") }}
+  {% if form.bcva.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.bcva.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+  <br/>
+
+
+  {{ form.iop.label(class="form-label") }}
+
+  {{ form.iop(class="form-control") }}
+
+  <br/>
+
+
+  {{ form.pvd.label(class="form-label") }}
+
+  {{ form.pvd(class="form-control") }}
+
+  <br/>
+
+  {{ form.pvr.label(class="form-label") }}
+
+  {{ form.pvr(class="form-control") }}
+
+  <br/>
+
+  {{ form.hemorrhage.label(class="form-label") }}
+
+  {{ form.hemorrhage(class="form-control") }}
+
+  <br/>
+</div>
+
+
+<div class="box shadow p-3 mb-5 bg-body-grey rounded">
+
+  
+  
+  {{ form.submit(class="btn btn-dark") }}
+
+</form>
+<a href="{{ url_for('profile', id=id) }}" class="btn btn-dark">Back To Profile</a>
+<a href="{{ url_for('preop2', id=id) }}" class="btn btn-dark">To Pre-Op II</a>
+
+</div>
+
+
+</br></br>
+</br></br>
+
+
+{% endif %}
+
+{% endblock %}

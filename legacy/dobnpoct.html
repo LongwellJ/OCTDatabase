@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{% for message in get_flashed_messages() %}
+
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+    
+{% endfor %}
+
+
+<form method="POST">
+
+
+            {{ form.hidden_tag() }}
+
+            <br/>
+
+            <h2>What is the date of birth of the new patient?</h2>
+            
+
+            {{ form.dateofbirth.label(class="form-label") }}
+
+            {{ form.dateofbirth(class="form-control") }}
+
+            <br/>
+
+            <h2>What are the initials of the new patient's first and last name?</h2>
+
+            {{ form.firstandlast.label(class="form-label") }}
+
+            {{ form.firstandlast(class="form-control") }}
+
+            <br/>
+
+
+
+            {{ form.submit(class="btn btn-secondary") }}
+</form>
+
+
+{% endblock %}

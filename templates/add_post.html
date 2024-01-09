@@ -1,0 +1,742 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+    
+{% endfor %}
+
+<h1>Add Post:</h1>
+<br/>
+
+    <h2>For missing info, please leave field blank</h2>
+
+
+
+    <div class="box shadow p-3 mb-5 bg-body-grey rounded">
+
+      <h2>Patient's Study Identifiers </h2>
+
+      <form method="POST" enctype="multipart/form-data">
+
+        {{ form.hidden_tag() }}
+        
+        {{ form.dateofbirth.label(class="form-label") }}
+
+        {{ form.dateofbirth(class="form-control") }}
+
+        <br/>
+
+        {{ form.firstandlast.label(class="form-label") }}
+
+        {{ form.firstandlast(class="form-control") }}
+
+        <br/>
+
+  </div>
+
+<div class="box shadow p-3 mb-5 bg-body-grey rounded">
+
+
+  <h2>Pre-Op I</h2>
+
+  <input type="file" name="Upload" id="Upload" accept="application/pdf, image/png" multiple>
+
+  <br>
+
+  {{ form.age.label(class="form-label") }}
+
+  {{ form.age(class="form-control") }}
+
+  <br/>
+
+
+    
+  {{ form.gender.label(class="form-label") }}
+
+  {{ form.gender(class="form-control") }}
+
+  <br/>
+
+
+  {{ form.laterality.label(class="form-label") }}
+
+  {{ form.laterality(class="form-control") }}
+
+  <br/>
+
+  {{ form.date1.label(class="form-label") }}
+
+  {{ form.date1(class="form-control") }}
+
+  <br/>
+
+  {{ form.fovea_status.label(class="form-label") }}
+
+  {{ form.fovea_status(class="form-control") }}
+
+  <br/>
+
+  
+  {{ form.shadow.label(class="form-label") }}
+
+  {{ form.shadow(class="form-control") }}
+
+  <br/>
+
+  
+  {{ form.involved.label(class="form-label") }}
+
+  {{ form.involved(class="form-control") }}
+
+  <br/>
+
+  {{ form.lens_status.label(class="form-label") }}
+
+  {{ form.lens_status(class="form-control") }}
+
+  <br/>
+
+  {{ form.extent.label(class="form-label") }}
+
+  {{ form.extent(class="form-control", placeholder="hh:mm-hh:mm") }}
+
+  {% if form.extent.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.extent.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+  <br/>
+
+  {{ form.area.label(class="form-label") }}
+
+  {{ form.area(class="form-control") }}
+
+  <br/>
+
+
+  {{ form.detached.label(class="form-label") }}
+
+  {{ form.detached(class="form-control", placeholder="number-hh:mm") }}
+  <br/>
+  
+  {% if form.detached.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.detached.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+  {{ form.detached2(class="form-control", placeholder="number-hh:mm") }}
+  {% if form.detached2.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.detached2.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+  <br/>
+  {{ form.detached3(class="form-control", placeholder="number-hh:mm") }}
+  {% if form.detached3.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.detached3.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+  <br/>
+  {{ form.detached4(class="form-control", placeholder="number-hh:mm") }}
+  {% if form.detached4.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.detached4.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+  <br/>
+  {{ form.detached5(class="form-control", placeholder="number-hh:mm") }}
+  {% if form.detached5.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.detached5.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+
+  <br/>
+
+
+  {{ form.attached.label(class="form-label") }}
+
+  {{ form.attached(class="form-control", placeholder="number-hh:mm") }}
+  {% if form.attached.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.attached.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+  <br/>
+  {{ form.attached2(class="form-control", placeholder="number-hh:mm") }}
+  {% if form.attached2.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.attached2.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+  <br/>
+  {{ form.attached3(class="form-control", placeholder="number-hh:mm") }}
+  {% if form.attached3.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.attached3.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+  <br/>
+  {{ form.attached4(class="form-control", placeholder="number-hh:mm") }}
+  {% if form.attached4.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.attached4.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+  <br/>
+  {{ form.attached5(class="form-control", placeholder="number-hh:mm") }}
+  {% if form.attached5.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.attached5.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+
+  <br/>
+
+
+  {{ form.size.label(class="form-label") }}
+
+  {{ form.size(class="form-control") }}
+
+  <br/>
+
+
+  {{ form.bcva.label(class="form-label") }}
+
+  {{ form.bcva(class="form-control", placeholder="XX/XX") }}
+  {% if form.bcva.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.bcva.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+
+  <br/>
+
+
+  {{ form.iop.label(class="form-label") }}
+
+  {{ form.iop(class="form-control") }}
+
+  <br/>
+
+
+  {{ form.pvd.label(class="form-label") }}
+
+  {{ form.pvd(class="form-control") }}
+
+  <br/>
+
+  {{ form.pvr.label(class="form-label") }}
+
+  {{ form.pvr(class="form-control") }}
+
+  <br/>
+
+  {{ form.hemorrhage.label(class="form-label") }}
+
+  {{ form.hemorrhage(class="form-control") }}
+
+  <br/>
+</div>
+
+
+
+  
+<div class="box shadow p-3 mb-5 bg-body-grey rounded">
+
+
+  <h2>Pre-Op II </h2>
+
+  <input type="file" name="Upload2" id="Upload2" accept="application/pdf, image/png" multiple>
+
+  <br>
+
+  {{ form.date2.label(class="form-label") }}
+
+  {{ form.date2(class="form-control") }}
+
+  <br/>
+
+
+    
+  {{ form.type.label(class="form-label") }}
+
+  {{ form.type(class="form-control") }}
+
+  <br/>
+
+
+  {{ form.combined.label(class="form-label") }}
+
+  {{ form.combined(class="form-control") }}
+
+  <br/>
+
+  {{ form.cryo.label(class="form-label") }}
+
+  {{ form.cryo(class="form-control") }}
+
+  <br/>
+
+  {{ form.laser.label(class="form-label", placeholder="nn-nnn-nn") }}
+
+  {{ form.laser(class="form-control") }}
+  {% if form.laser.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.laser.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+
+  <br/>
+
+  {{ form.tech.label(class="form-label") }}
+
+  {{ form.tech(class="form-control") }}
+
+  <br/>
+
+  {{ form.tamp.label(class="form-label") }}
+
+  {{ form.tamp(class="form-control") }}
+
+  <br/>
+
+  {{ form.pfo.label(class="form-label") }}
+
+  {{ form.pfo(class="form-control") }}
+
+  <br/>
+
+
+  {{ form.found.label(class="form-label") }}
+
+  {{ form.found(class="form-control", placeholder='number-hh:mm') }}
+
+  <br/>
+  {% if form.found.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.found.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+
+  {{ form.found2(class="form-control", placeholder='number-hh:mm') }}
+  {% if form.found2.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.found2.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+  <br/>
+  {{ form.found3(class="form-control", placeholder='number-hh:mm') }}
+  {% if form.found3.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.found3.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+  <br/>
+  {{ form.found4(class="form-control", placeholder='number-hh:mm') }}
+  {% if form.found4.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.found4.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+  <br/>
+  {{ form.found5(class="form-control", placeholder='number-hh:mm') }}
+  {% if form.found5.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.found5.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+</div>
+
+
+
+<div class="box shadow p-3 mb-5 bg-body-grey rounded">
+
+
+<h2>1 week</h2>
+
+<input type="file" name="Upload3" id="Upload3" accept="application/pdf, image/png" multiple>
+
+<br>
+
+{{ form.date3.label(class="form-label") }}
+
+{{ form.date3(class="form-control") }}
+
+<br/>
+
+
+{{ form.bcva2.label(class="form-label") }}
+
+{{ form.bcva2(class="form-control", placeholder="XX/XX") }}
+{% if form.bcva2.errors %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  {% for error in form.bcva2.errors %}
+        <li>{{ error }}</li>
+    {% endfor %}
+</div>
+{% endif %}
+<br/>
+
+
+{{ form.iop2.label(class="form-label") }}
+
+{{ form.iop2(class="form-control") }}
+
+<br/>
+
+
+</div>
+
+
+
+<div class="box shadow p-3 mb-5 bg-body-grey rounded">
+
+
+<h2>1 month Post-Op</h2>
+
+<input type="file" name="Upload4" id="Upload4" accept="application/pdf, image/png" multiple>
+
+<br>
+
+{{ form.date4.label(class="form-label") }}
+
+{{ form.date4(class="form-control") }}
+
+<br/>
+
+
+{{ form.bcva3.label(class="form-label") }}
+
+{{ form.bcva3(class="form-control", placeholder="XX/XX") }}
+{% if form.bcva3.errors %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  {% for error in form.bcva3.errors %}
+        <li>{{ error }}</li>
+    {% endfor %}
+</div>
+{% endif %}
+<br/>
+
+
+{{ form.iop3.label(class="form-label") }}
+
+{{ form.iop3(class="form-control") }}
+
+<br/>
+
+</div>
+
+
+<div class="box shadow p-3 mb-5 bg-body-grey rounded">
+
+
+<h2>3 month Post-Op</h2>
+
+<input type="file" name="Upload5" id="Upload5" accept="application/pdf, image/png" multiple>
+
+<br>
+
+
+{{ form.date5.label(class="form-label") }}
+
+{{ form.date5(class="form-control") }}
+
+<br/>
+
+
+{{ form.lens_status2.label(class="form-label") }}
+
+{{ form.lens_status2(class="form-control") }}
+
+<br/>
+
+
+{{ form.bcva4.label(class="form-label") }}
+
+{{ form.bcva4(class="form-control", placeholder="XX/XX") }}
+{% if form.bcva4.errors %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  {% for error in form.bcva4.errors %}
+        <li>{{ error }}</li>
+    {% endfor %}
+</div>
+{% endif %}
+<br/>
+
+
+{{ form.iop4.label(class="form-label") }}
+
+{{ form.iop4(class="form-control") }}
+
+<br/>
+
+
+{{ form.m_charth.label(class="form-label") }}
+
+{{ form.m_charth(class="form-control") }}
+
+<br/>
+
+
+{{ form.m_chartv.label(class="form-label") }}
+
+{{ form.m_chartv(class="form-control") }}
+
+<br/>
+
+
+{{ form.ask.label(class="form-label") }}
+
+{{ form.ask(class="form-control") }}
+
+<br/>
+
+
+{{ form.questionnaire.label(class="form-label") }}
+
+{{ form.questionnaire(class="form-control") }}
+
+<br/>
+
+</div>
+
+
+<div class="box shadow p-3 mb-5 bg-body-grey rounded">
+
+
+  <h2>Single procedure anatomical Success</h2>
+
+
+  {{ form.acheive.label(class="form-label") }}
+
+  {{ form.acheive(class="form-control") }}
+
+  <br/>
+
+</div>
+
+
+<div class="box shadow p-3 mb-5 bg-body-grey rounded">
+
+
+<h2>6 month Post-Op</h2>
+
+<input type="file" name="Upload6" id="Upload6" accept="application/pdf, image/png" multiple>
+
+<br>
+
+{{ form.date6.label(class="form-label") }}
+
+{{ form.date6(class="form-control") }}
+
+<br/>
+
+
+{{ form.lens_status3.label(class="form-label") }}
+
+{{ form.lens_status3(class="form-control") }}
+
+<br/>
+
+
+{{ form.bcva5.label(class="form-label") }}
+
+{{ form.bcva5(class="form-control", placeholder="XX/XX") }}
+{% if form.bcva5.errors %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  {% for error in form.bcva5.errors %}
+        <li>{{ error }}</li>
+    {% endfor %}
+</div>
+{% endif %}
+<br/>
+
+
+{{ form.iop5.label(class="form-label") }}
+
+{{ form.iop5(class="form-control") }}
+
+<br/>
+
+
+{{ form.m_charth2.label(class="form-label") }}
+
+{{ form.m_charth2(class="form-control") }}
+
+<br/>
+
+
+{{ form.m_chartv2.label(class="form-label") }}
+
+{{ form.m_chartv2(class="form-control") }}
+
+<br/>
+
+
+{{ form.ask2.label(class="form-label") }}
+
+{{ form.ask2(class="form-control") }}
+
+<br/>
+
+
+{{ form.questionnaire2.label(class="form-label") }}
+
+{{ form.questionnaire2(class="form-control") }}
+
+<br/>
+
+</div>
+
+
+
+<div class="box shadow p-3 mb-5 bg-body-grey rounded">
+
+
+<h2>12 month Post-Op</h2>
+
+<input type="file" name="Upload7" id="Upload7" accept="application/pdf, image/png" multiple>
+
+<br>
+
+
+{{ form.date7.label(class="form-label") }}
+
+{{ form.date7(class="form-control") }}
+
+<br/>
+
+
+{{ form.lens_status4.label(class="form-label") }}
+
+{{ form.lens_status4(class="form-control") }}
+
+<br/>
+
+
+{{ form.bcva6.label(class="form-label") }}
+
+{{ form.bcva6(class="form-control", placeholder="XX/XX") }}
+{% if form.bcva6.errors %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  {% for error in form.bcva6.errors %}
+        <li>{{ error }}</li>
+    {% endfor %}
+</div>
+{% endif %}
+<br/>
+
+
+{{ form.iop6.label(class="form-label") }}
+
+{{ form.iop6(class="form-control") }}
+
+<br/>
+
+
+{{ form.m_charth3.label(class="form-label") }}
+
+{{ form.m_charth3(class="form-control") }}
+
+<br/>
+
+
+{{ form.m_chartv3.label(class="form-label") }}
+
+{{ form.m_chartv3(class="form-control") }}
+
+<br/>
+
+
+{{ form.ask3.label(class="form-label") }}
+
+{{ form.ask3(class="form-control") }}
+
+<br/>
+
+
+{{ form.questionnaire3.label(class="form-label") }}
+
+{{ form.questionnaire3(class="form-control") }}
+
+<br/>
+
+</div>
+
+
+<div class="box shadow p-3 mb-5 bg-body-grey rounded">
+
+
+  <h2>Final procedure anatomical Success</h2>
+
+
+  {{ form.acheive2.label(class="form-label") }}
+
+  {{ form.acheive2(class="form-control") }}
+
+  <br/>
+
+  {{ form.oil.label(class="form-label") }}
+
+  {{ form.oil(class="form-control") }}
+  <br/>
+
+</div>
+
+<div class="box shadow p-3 mb-5 bg-body-grey rounded">
+
+    {{ form.submit(class="btn btn-dark") }}
+      </form>
+</div>
+
+
+
+
+
+{% endblock %}
+

@@ -1,0 +1,33 @@
+<!--  
+      <form method="POST" action="{{ url_for('search') }}" class="d-flex" role="search">
+        {{ form.hidden_tag() }}
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search", name="searched">
+        <button class="btn btn-outline-secondary" type="submit">Search</button>
+      </form>
+-->
+
+
+<!--
+    <table class="table table-hover table-bordered table-striped">
+
+        {% for our_user in our_users %}
+            <tr>
+            <td>{{our_user.id}}. <a href="{{ url_for('update', id=our_user.id) }}">  {{ our_user.name }}</a> - {{our_user.email}} - {{our_user.favorite_color}} - <a href="{{ url_for('delete', id=our_user.id) }}" class ="btn btn-danger">Delete</a></td>
+            </tr>
+        {% endfor %}
+    
+    </table>
+-->
+
+
+<!--
+<table class="table table-hover table-bordered table-striped">
+
+    {% for our_user in our_users %}
+        <tr>
+        <td>{{our_user.id}}.  <a href="{{ url_for('update', id=our_user.id) }}">  {{ our_user.name }}</a> - {{ our_user.username }} - {{our_user.email}} - {{our_user.favorite_color}} - PW: {{our_user.password_hash}}  <a href="{{ url_for('delete', id=our_user.id) }}" class ="btn btn-danger">Delete</a> </td>
+      </tr>
+      {% endfor %}
+  
+  </table>
+  -->

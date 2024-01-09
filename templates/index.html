@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{% for message in get_flashed_messages() %}
+
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+    
+{% endfor %}
+
+
+    <br/><br/>
+    <div class="card text-center">
+
+        <div class="card-body">
+          <h5 class="card-title">Enter Patient Details</h5>
+          <p class="card-text">Here you may create new patient entries or edit your existing ones.</p>
+          <a href="{{url_for('add_post')}}"><button type="button" class="btn btn-secondary btn-lg">New Patient</button></a>
+          <a href="{{url_for('dobep')}}"><button type="button" class="btn btn-secondary btn-lg">Existing Patient</button></a>
+
+        </div>
+    </div>
+      
+    <br/><br/>
+
+    <div class="card text-center">
+
+        <div class="card-body">
+          <h5 class="card-title">Enter OCT Images</h5>
+          <p class="card-text">Here you may create new OCT profiles or edit your existing ones.</p>
+          <a href="{{url_for('dobnpoct')}}"><button type="button" class="btn btn-secondary btn-lg">New profile</button></a>
+          <a href="{{url_for('dobepoct')}}"><button type="button" class="btn btn-secondary btn-lg">Existing profile</button></a>
+        </div>
+    </div>
+    
+    <br/><br/>
+
+    <div class="card text-center">
+      <div class="card-body">
+        <h5 class="card-title">Observe My Data</h5>
+        <p class="card-text">Here you may browse your existing patient details in a spreadsheet</p>
+        <a href="{{url_for('allpatients', user=user)}}"><button type="button" class="btn btn-secondary btn-lg">Data Sheets</button></a>
+    </div>
+    </div>
+
+    <br/><br/>
+</div>
+
+
+{% endblock %}

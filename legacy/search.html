@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br/>
+<h2>You Searched For...</h2>
+<p> {{ searched }} </p>
+
+
+
+{% for post in posts %}
+
+<div class="shadow p-3 mb-5 bg-body rounded">
+
+  <h2>{{ post.title }}</h2>
+
+  By: {{ post.poster.name }}<br/>
+  {{ post.date_posted }}
+  DOB:{{ post.dateofbirth }}
+
+  <br/>
+  {{ post.content }}<br/><br/>
+  
+
+  <a href=" {{ url_for('post', id=post.id)}}" class="btn btn-outline-secondary btn-sm">View post</a>
+
+
+  {% if post.poster_id == current_user.id %}
+
+  <a href=" {{ url_for('edit_post', id=post.id)}}" class="btn btn-outline-secondary btn-sm">Edit post</a>
+  
+  <a href=" {{ url_for('delete_post', id=post.id)}}" class="btn btn-outline-danger btn-sm">Delete post</a>
+
+
+  {% endif %}
+
+</div>
+{% endfor %}
+
+
+
+
+{% endblock %}

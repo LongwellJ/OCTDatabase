@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<br/><br/>
+<div class="card text-center">
+
+    <div class="card-body">
+      <h5 class="card-title"><h1>New patient or existing patient?</h1></h5>
+      <a href="{{url_for('add_post')}}"><button type="button" class="btn btn-primary btn-lg">New Patient</button></a>
+      <a href="{{url_for('dobep')}}"><button type="button" class="btn btn-primary btn-lg">Existing Patient</button></a>
+    </div>
+</div>
+  
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- other way to lock down a page--> 
+
+<h2> Congrats, ur browsing the database, but are you authenticated? </h2>
+
+
+{% if current_user.is_authenticated %}
+
+<h1>Yes! </h1>
+
+{% else %}
+
+<h1> Nope </h1>
+
+<p>Must be logged in</p>
+
+<a href="{{ url_for('login') }}"> Login Here</a>
+
+
+{% endif %}
+
+
+
+
+{% endblock %}

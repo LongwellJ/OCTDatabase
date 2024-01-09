@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OCT Storage</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+  </head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+
+<nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{{ url_for('login') }}">OCT Database</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+  
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('add_user') }}">Register</a>
+          </li>
+  
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+          </li>
+  
+        </ul>
+  
+  
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+{% for message in get_flashed_messages() %}
+
+{% if name %}
+
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    Hey {{name}} - {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+  {% else %}
+
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    Hey - {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+{% endif %}
+
+{% endfor %}
+
+{% if name %}
+
+    <h1> User Added! </h1>
+    <br/>
+
+{% else %}
+
+    <h1>Registration:</h1>
+    <br/>
+<div class="box shadow p-3 mb-5 bg-body-grey rounded">
+        
+
+    <form method="POST">
+
+        
+
+
+            {{ form.hidden_tag() }}
+
+            <br/>
+
+            {{ form.username.label(class="form-label") }}
+
+            {{ form.username(class="form-control") }}
+
+            <br/>
+
+
+            {{ form.password_hash.label(class="form-label") }}
+
+            {{ form.password_hash(class="form-control") }}
+
+            <br/>
+
+            {{ form.password_hash2.label(class="form-label") }}
+
+            {{ form.password_hash2(class="form-control") }}
+
+            <br/>
+
+            {{ form.submit(class="btn btn-dark") }}
+        
+    </form>
+</div>
+
+
+{% endif %}
+</div>
+</body>

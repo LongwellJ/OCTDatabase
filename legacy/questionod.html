@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<br/><br/>
+<div class="card text-center">
+
+    <div class="card-body">
+      <h5 class="card-title"><h1>Are you looking to browse your patient data sheets or patient OCTs?</h1></h5>
+      <a href="{{url_for('allpatients', user=user)}}"><button type="button" class="btn btn-primary btn-lg">Data Sheets</button></a>
+      <a href="{{url_for('dobepoct')}}"><button type="button" class="btn btn-primary btn-lg">OCTs</button></a>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{% for message in get_flashed_messages() %}
+
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+    
+{% endfor %}
+
+
+
+
+
+{% if profile.poster_id == current_user.id or current_user.id == 1 %}
+
+<br>
+<h1>Upload an OCT</h1>
+<br>
+
+
+<form method="POST" action="{{ url_for('postop3', id=id)}}" enctype="multipart/form-data">
+  <input type="file" name="Upload" id="Upload" accept="application/pdf, image/png" multiple>
+  <button class="btn btn-dark">Submit</button>
+</form>
+<br>
+<br>
+{% for link in list %}
+
+<img src = "{{ link }}" width="200px" height="200px" >
+
+{% endfor %}
+
+
+<h1>Edit Patient's Data</h1>
+
+<br/>
+
+<div class="box shadow p-3 mb-5 bg-body-grey rounded">
+
+    
+    
+  <h2>3M Post-Op</h2>
+
+
+    <form method="POST">
+      {{ form.hidden_tag() }}
+
+
+      {{ form.date5.label(class="form-label") }}
+
+      {{ form.date5(class="form-control") }}
+      
+      <br/>
+      
+      
+      {{ form.lens_status2.label(class="form-label") }}
+      
+      {{ form.lens_status2(class="form-control") }}
+      
+      <br/>
+      
+      
+      {{ form.bcva4.label(class="form-label") }}
+      
+      {{ form.bcva4(class="form-control", placeholder="XX/YY") }}
+      {% if form.bcva4.errors %}
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {% for error in form.bcva4.errors %}
+              <li>{{ error }}</li>
+          {% endfor %}
+      </div>
+    {% endif %}
+      <br/>
+      
+      
+      {{ form.iop4.label(class="form-label") }}
+      
+      {{ form.iop4(class="form-control") }}
+      
+      <br/>
+      
+      
+      {{ form.m_charth.label(class="form-label") }}
+      
+      {{ form.m_charth(class="form-control") }}
+      
+      <br/>
+      
+      
+      {{ form.m_chartv.label(class="form-label") }}
+      
+      {{ form.m_chartv(class="form-control") }}
+      
+      <br/>
+      
+      
+      {{ form.ask.label(class="form-label") }}
+      
+      {{ form.ask(class="form-control") }}
+      
+      <br/>
+      
+      
+      {{ form.questionnaire.label(class="form-label") }}
+      
+      {{ form.questionnaire(class="form-control") }}
+      
+      <br/>
+      
+      </div>
+
+
+      <div class="box shadow p-3 mb-5 bg-body-grey rounded">
+
+
+        <h2>Single procedure anatomical Success</h2>
+      
+      
+        {{ form.acheive.label(class="form-label") }}
+      
+        {{ form.acheive(class="form-control") }}
+      
+        <br/>
+      
+      </div>
+      
+
+
+<div class="box shadow p-3 mb-5 bg-body-grey rounded">
+  {{ form.submit(class="btn btn-dark") }}
+      
+  </form>
+  <a href="{{ url_for('profile', id=id) }}" class="btn btn-dark">Back To Profile</a>
+  <a href="{{ url_for('postop2', id=id) }}" class="btn btn-dark">To 1M Post-Op</a>
+  <a href="{{ url_for('postop4', id=id) }}" class="btn btn-dark">To 6M Post-Op</a>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

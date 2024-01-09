@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>What is the date of birth of the existing patient?</h2>
+
+<form action="/searched", method="POST">
+            {{ form.hidden_tag() }}
+
+            {{ form.dateofbirth.label(class="form-label") }}
+
+            {{ form.dateofbirth(class="form-control") }}
+
+            <br/>
+
+            {{ form.firstandlast.label(class="form-label") }}
+
+            {{ form.firstandlast(class="form-control") }}
+
+            <br/>
+
+            {{ form.submit(class="btn btn-secondary") }}
+</form>
+
+
+
+{% endblock %}

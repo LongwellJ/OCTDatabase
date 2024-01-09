@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+
+<br/><br/>
+<div class="card text-center">
+
+    <div class="card-body">
+      <h5 class="card-title"><h1>New patient profile or existing patient profile?</h1></h5>
+      <a href="{{url_for('dobnpoct')}}"><button type="button" class="btn btn-primary btn-lg">New profile</button></a>
+      <a href="{{url_for('dobepoct')}}"><button type="button" class="btn btn-primary btn-lg">Existing profile</button></a>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{% for message in get_flashed_messages() %}
+
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+    
+{% endfor %}
+
+
+
+
+{% if profile.poster_id == current_user.id or current_user.id == 1 %}
+<br>
+<h1>Upload an OCT</h1>
+<br>
+<form method="POST" action="{{ url_for('preop2', id=id)}}" enctype="multipart/form-data">
+  <input type="file" name="Upload" id="Upload" accept="application/pdf, image/png" multiple>
+  <button class="btn btn-dark">Submit</button>
+</form>
+<br>
+<br>
+{% for link in list %}
+
+<img src = "{{ link }}" width="200px" height="200px" >
+
+{% endfor %}
+
+
+<h1>Edit Patient's Data</h1>
+
+<br/>
+  
+<div class="box shadow p-3 mb-5 bg-body-grey rounded">
+
+
+  <h2>Procedure Visit Pre-Op II</h2>
+
+  <form method="POST">
+  {{ form.hidden_tag() }}
+
+  {{ form.date2.label(class="form-label") }}
+
+  {{ form.date2(class="form-control") }}
+
+  <br/>
+
+
+    
+  {{ form.type.label(class="form-label") }}
+
+  {{ form.type(class="form-control") }}
+
+  <br/>
+
+
+  {{ form.combined.label(class="form-label") }}
+
+  {{ form.combined(class="form-control") }}
+
+  <br/>
+
+  {{ form.cryo.label(class="form-label") }}
+
+  {{ form.cryo(class="form-control") }}
+
+  <br/>
+
+  {{ form.laser.label(class="form-label") }}
+
+  {{ form.laser(class="form-control", placeholder="nn-nnn-nn") }}
+  {% if form.laser.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.laser.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+  <br/>
+
+  {{ form.tech.label(class="form-label") }}
+
+  {{ form.tech(class="form-control") }}
+
+  <br/>
+
+  {{ form.tamp.label(class="form-label") }}
+
+  {{ form.tamp(class="form-control") }}
+
+  <br/>
+
+  {{ form.pfo.label(class="form-label") }}
+
+  {{ form.pfo(class="form-control") }}
+
+  <br/>
+
+
+  {{ form.found.label(class="form-label") }}
+
+  {{ form.found(class="form-control", placeholder='number-hh:mm') }}
+  {% if form.found.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.found.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+<br/>
+
+  {{ form.found2(class="form-control", placeholder='number-hh:mm') }}
+  {% if form.found2.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.found2.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+  <br/>
+  {{ form.found3(class="form-control", placeholder='number-hh:mm') }}
+  {% if form.found3.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.found3.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+  <br/>
+  {{ form.found4(class="form-control", placeholder='number-hh:mm') }}
+  {% if form.found4.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.found4.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+  <br/>
+  {{ form.found5(class="form-control", placeholder='number-hh:mm') }}
+  {% if form.found5.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {% for error in form.found5.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+  </div>
+{% endif %}
+</div>
+
+
+
+<div class="box shadow p-3 mb-5 bg-body-grey rounded">
+  
+  {{ form.submit(class="btn btn-dark") }}
+
+</form>
+
+<a href="{{ url_for('profile', id=id) }}" class="btn btn-dark">Back To Profile</a>
+<a href="{{ url_for('preop1', id=id) }}" class="btn btn-dark">To Pre-Op I</a>
+<a href="{{ url_for('postop1', id=id) }}" class="btn btn-dark">To 1W Post-Op</a>
+
+
+</div>
+</br></br>
+</br></br>
+
+
+{% endif %}
+
+{% endblock %}

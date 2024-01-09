@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{% for message in get_flashed_messages() %}
+
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+    
+{% endfor %}
+
+
+{% if post.poster_id == current_user.id or current_user.id == 1 %}
+
+
+
+    <h1>This patient's study ID is: {{ s_id |capitalize }}</h1>
+
+    <p>Which folder would you like to access?</p>
+
+    <div class="shadow p-3 mb-5 bg-body rounded">
+        <a href=" {{ url_for('preop1', id=id)}}"><button type="button" class="btn btn-dark">Pre-Op I</button></a>
+        <a href=" {{ url_for('preop2', id=id)}}"><button type="button" class="btn btn-dark">Pre-OP II</button></a>
+        <a href=" {{ url_for('postop1', id=id)}}"><button type="button" class="btn btn-dark">1W Post-Op</button></a>
+        <a href=" {{ url_for('postop2', id=id)}}"><button type="button" class="btn btn-dark">1M Post-Op</button></a>
+        <a href=" {{ url_for('postop3', id=id)}}"><button type="button" class="btn btn-dark">3M Post-Op</button></a>
+        <a href=" {{ url_for('postop4', id=id)}}"><button type="button" class="btn btn-dark">6M Post-Op</button></a>
+        <a href=" {{ url_for('postop5', id=id)}}"><button type="button" class="btn btn-dark">12M Post-Op</button></a>          
+    </div>
+
+
+
+{% endif %}
+
+
+{% endblock %}

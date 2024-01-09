@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OCT Storage</title>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <style>
+        table {
+            width: auto;
+            border-collapse: collapse;
+            background-color:darkgrey; /* Set the background color for the boxes */
+            overflow: auto;
+            border-radius: 5px;
+            height: auto;
+        }
+        .table-header {
+            font-weight: bold;
+          }
+         
+        th, td {
+            padding: 10px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        td {
+          font-size : 9pt;
+        
+        }
+        
+        th {
+          text-align: center;
+        
+        }
+
+        
+        thead {
+          background-color: #333;
+          position: sticky;
+          top: 0;
+          z-index: 10;
+          font-size: 10pt;
+          color: #fff;
+        
+        }
+        
+        .frozen-column {
+          background-color:darkgrey; /* Set the background color for the boxes */
+          text-align: center;
+          position: sticky;
+          left: 0;
+          z-index: 5;
+        
+        }
+        tr.top-aligned {
+            vertical-align: top;
+        }
+        
+        </style>
+  </head>
+<body>
+    <div class="container">
+
+    
+        <table>
+          <thead class="table-header">
+          <tr style="color: #d1e7dd;">
+            {% if current_user.id == 1 %}
+              <th colspan="5">Patient's Study Identifiers</th>
+            {% else %}
+              <th colspan="3">Patient's Study Identifiers</th>
+            {% endif %}  
+              <th colspan="18">Pre-Op I</th>
+              <th colspan="9">Pre-Op II</th>
+              <th colspan="3">1 Week Post-Op</th>
+              <th colspan="3">1 Month Post-Op</th>
+              <th colspan="8">3 Month Post-Op</th>
+              <th colspan="1">Single procedure anatomical Success</th>
+              <th colspan="8">6 Month Post-Op</th>
+              <th colspan="8">12 Month Post-Op</th>
+              <th colspan="1">Single procedure anatomical Success</th>
+    
+            </tr>
+            
+          <tr class="top-aligned">
+            {% if current_user.id == 1 %}
+              <th>Site ID</th>
+              <th>Delete</th>
+            {% endif %}  
+            <th class="frozen-column">Database ID</th>
+            <th>First Names' Letters</th>
+            <th>DOB</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Laterality</th>
+            <th>Date</th>
+            <th>Fovea Status</th>
+            <th>When did the shadow first appear?</th>
+            <th>When did the shadow first involve the central vision field?</th>
+            <th>Lens status</th>
+            <th>Extent of the detachment</th>
+            <th>Main area of the detachment</th>
+            <th>Number and Locations of retinal tears detached</th>
+            <th>Number and Locations of retinal tears attached</th>
+            <th>Size of the largest tear</th>
+            <th>BCVA</th>
+            <th>IOP</th>
+            <th>PVD status</th>
+            <th>PVR status</th>
+            <th>Presence of vitreous hemorrhage</th>
+            <th>Date</th>
+            <th>Procedure type</th>
+            <th>Combined PhakoVitrectomy?</th>
+            <th>Cryo</th>
+            <th>Laser</th>
+            <th>Drainage Technique</th>
+            <th>Tamponade used</th>
+            <th>PFO fluid</th>
+            <th>Number and Locations of retinal tears detached found Intra operativly</th>
+            <th>Date</th>
+            <th>BCVA</th>
+            <th>IOP</th>
+            <th>Date</th>
+            <th>BCVA</th>
+            <th>IOP</th>
+            <th>Date</th>
+            <th>Lens status</th>
+            <th>BCVA</th>
+            <th>IOP</th>
+            <th>M-CHART MH score</th>
+            <th>M-CHART MV score</th>
+            <th>ASK</th>
+            <th>M-Questionnaire score</th>
+            <th>Did the first surgery achieved reattchment</th>
+            <th>Date</th>
+            <th>Lens status</th>
+            <th>BCVA</th>
+            <th>IOP</th>
+            <th>M-CHART MH score</th>
+            <th>M-CHART MV score</th>
+            <th>ASK</th>
+            <th>M-Questionnaire score</th>
+            <th>Date</th>
+            <th>Lens status</th>
+            <th>BCVA</th>
+            <th>IOP</th>
+            <th>M-CHART MH score</th>
+            <th>M-CHART MV score</th>
+            <th>ASK</th>
+            <th>M-Questionnaire score</th>
+            <th>Did the first surgery achieved reattchment</th>
+          </tr>
+    
+        </thead>
+          {% for row in theposts %}
+          <tr style="color: black;">
+            {% if current_user.id == 1 %}
+            <td>{{ row.poster_id }}</td>
+            <td class="frozen-column"><a href="{{url_for('deletewarning', id=row.id)}}">
+              <button class="circle-button">X</button>
+            </a></td>
+            <td class="frozen-column"><a href="{{url_for('profile', id=row.id)}}">
+              <button class="circle-button">{{ row.id }}</button>
+            </a></td>
+            {% else %}
+            <td class="frozen-column"><a href="{{url_for('profile', id=row.id)}}">
+              <button class="circle-button">{{ row.id }}</button>
+            </a></td>
+            {% endif %}  
+            <td>{{ row.firstandlast }}</td>
+            <td class="qg">{{ row.dateofbirth }}</td>
+            <td class="qg">{{ row.age }}</td>
+            <td>{{ row.gender }}</td>
+            <td>{{ row.laterality }}</td>
+            <td class="qg">{{ row.date1 }}</td>
+            <td>{{ row.fovea_status }}</td>
+            <td class="qg">{{ row.shadow }}</td>
+            <td class="qg">{{ row.involved }}</td>
+            <td>{{ row.lens_status }}</td>
+            <td>{{ row.extenttotal }}</td>
+            <td>{{ row.area }}</td>
+            <td>{{ row.detachedtotal }}</td>
+            <td>{{ row.attachedtotal }}</td>
+            <td class="qg">{{ row.size }}</td>
+            <td class="qg">{{ row.bcva }}</td>
+            <td class="qg">{{ row.iop }}</td>
+            <td>{{ row.pvd }}</td>
+            <td>{{ row.pvr }}</td>
+            <td class="qg">{{ row.hemorrhage }}</td>
+            <td class="qg">{{ row.date2 }}</td>
+            <td>{{ row.type }}</td>
+            <td>{{ row.combined }}</td>
+            <td>{{ row.cryo }}</td>
+            <td>{{ row.laser }}</td>
+            <td>{{ row.tech }}</td>
+            <td>{{ row.tampt }}</td>
+            <td>{{ row.pfo }}</td>
+            <td>{{ row.foundtotal }}</td>
+            <td class="qg">{{ row.date3 }}</td>
+            <td class="qg">{{ row.bcva2 }}</td>
+            <td class="qg">{{ row.iop2 }}</td>
+            <td class="qg">{{ row.date4 }}</td>
+            <td class="qg">{{ row.bcva3 }}</td>
+            <td class="qg">{{ row.iop3 }}</td>
+            <td class="qg">{{ row.date5 }}</td>
+            <td>{{ row.lens_status2 }}</td>
+            <td class="qg">{{ row.bcva4 }}</td>
+            <td class="qg">{{ row.iop4 }}</td>
+            <td class="qg">{{ row.m_charth }}</td>
+            <td class="qg">{{ row.m_chartv }}</td>
+            <td class="qg">{{ row.ask }}</td>
+            <td class="qg">{{ row.questionnaire }}</td>
+            <td>{{ row.acheive }}</td>
+    
+            <td class="qg">{{ row.date6 }}</td>
+            <td>{{ row.lens_status3 }}</td>
+            <td class="qg">{{ row.bcva5 }}</td>
+            <td class="qg">{{ row.iop5 }}</td>
+            <td class="qg">{{ row.m_charth2 }}</td>
+            <td class="qg">{{ row.m_chartv2 }}</td>
+            <td class="qg">{{ row.ask2 }}</td>
+            <td class="qg">{{ row.questionnaire2 }}</td>
+            <td class="qg">{{ row.date7 }}</td>
+            <td>{{ row.lens_status4 }}</td>
+            <td class="qg">{{ row.bcva6 }}</td>
+            <td class="qg">{{ row.iop6 }}</td>
+            <td class="qg">{{ row.m_charth3 }}</td>
+            <td class="qg">{{ row.m_chartv3 }}</td>
+            <td class="qg">{{ row.ask3 }}</td>
+            <td class="qg">{{ row.questionnaire3 }}</td>
+            <td>{{ row.acheive2 }}</td>
+    
+    
+          </tr>
+          {% endfor %}
+        </table>
+      </div>   
+    
+      {% if current_user.id == 1 %}
+    
+      <br/>
+      <h1>Site ID Legend</h1>
+      <table>
+        
+      </table>
+    
+      {% endif %}
+        </div>
+
+</body>
+</html>
